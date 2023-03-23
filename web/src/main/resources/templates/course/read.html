@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Read</title>
+
+  <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+</head>
+<body>
+<div th:insert="common/navbars::top-navbar"></div>
+<main class="main">
+
+  <div>
+    <a class="button" th:href="@{/course/create}">Create New</a>
+  </div>
+  <div th:switch="${models.size()}">
+    <p th:case="0" th:text="'No records to display.'"></p>
+    <table class="table" th:case="*">
+      <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Credit</th>
+        <th>Semester</th>
+        <th>Grade</th>
+        <th><!-- HANDLES --></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="model : ${models}">
+        <td th:text="${model.id}"></td>
+        <td th:text="${model.name}"></td>
+        <td th:text="${model.credit}"></td>
+        <td th:text="${model.semester}"></td>
+        <td th:text="${model.grade}"></td>
+        <td>
+          <a th:href="@{/course/update(id=${model.id})}">Edit</a>
+          <a th:href="@{/course/delete(id=${model.id})}">Delete</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</main>
+</body>
+</html>

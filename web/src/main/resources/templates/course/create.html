@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Create</title>
+
+  <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+</head>
+<body>
+<div th:insert="common/navbars::top-navbar"></div>
+<main class="main">
+  <div>
+    <form method="post" th:action="@{/course/create}" th:object="${model}">
+      <div class="td model-attributes">
+        <label th:for="name">Name</label>
+        <input id="name" th:field="*{name}" type="text"/>
+
+        <label th:for="credit">Credit</label>
+        <input id="credit" th:field="*{credit}" type="number" step="1" min="0" max="999"/>
+
+        <label for="semester">Semester</label>
+        <select id="semester" th:field="*{semester}">
+          <option th:each="opt : ${T(hu.szte.inf.models.Semester).values()}"
+                  th:value="${opt}" th:text="${opt.displayValue}"></option>
+        </select>
+
+        <label for="grade">Grade</label>
+        <select id="grade" th:field="*{grade}">
+          <option th:value="null"></option>
+          <option th:each="opt : ${T(hu.szte.inf.models.Grade).values()}"
+                  th:value="${opt}" th:text="${opt.displayValue}"></option>
+        </select>
+      </div>
+      <button type="submit">Create</button>
+    </form>
+    <button onclick="history.back()">Back</button>
+  </div>
+</main>
+</body>
+</html>

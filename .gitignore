@@ -1,0 +1,12 @@
+.idea
+.vscode
+**/*.iml
+**/target/*
+**/out/*
+
+*.zip
+*.war
+*.jar
+
+# do not ignore wrapper jar
+!maven-wrapper.jar

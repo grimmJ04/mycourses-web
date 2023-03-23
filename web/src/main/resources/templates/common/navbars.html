@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Navbar Fragments</title>
+
+  <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+</head>
+<body>
+<nav class="navbar top-nav" th:fragment="top-navbar">
+  <div class="nav-div left">
+    <a class="nav-button" th:href="@{/index}">Home</a>
+    <a class="nav-button" th:href="@{/course/read}">Course</a>
+  </div>
+  <div class="nav-div right">
+    <a class="nav-button" th:href="@{/about}">About</a>
+  </div>
+</nav>
+</body>
+</html>
