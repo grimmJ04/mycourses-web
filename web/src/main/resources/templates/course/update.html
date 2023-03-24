@@ -10,10 +10,10 @@
 <div th:insert="common/navbars::top-navbar"></div>
 <main class="main">
   <div>
-    <form method="post" th:action="@{/course/create}" th:object="${model}">
-      <div class="td model-attributes">
+    <form method="post" class="form" th:action="@{/course/update}" th:object="${model}">
+      <div class="form-group model-attributes">
         <label th:for="id">Id</label>
-        <input id="id" th:field="*{id}" th:value="${model.id}" type="number" disabled/>
+        <input id="id" th:field="*{id}" th:value="${model.id}" type="number" readonly/>
 
         <label th:for="name">Name</label>
         <input id="name" th:field="*{name}" th:value="${model.name}" type="text"/>
@@ -34,9 +34,11 @@
                   th:value="${opt}" th:text="${opt.displayValue}"></option>
         </select>
       </div>
-      <button type="submit">Update</button>
+      <div class="form-group buttons">
+        <button class="button" type="submit">Update</button>
+        <button class="button" onclick="history.back()" type="button">Back</button>
+      </div>
     </form>
-    <button onclick="history.back()">Back</button>
   </div>
 </main>
 </body>

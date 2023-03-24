@@ -11,7 +11,7 @@
 <main class="main">
 
   <div>
-    <a class="button" th:href="@{/course/create}">Create New</a>
+    <a class="anchor-button" th:href="@{/course/create}">Create New</a>
   </div>
   <div th:switch="${models.size()}">
     <p th:case="0" th:text="'No records to display.'"></p>
@@ -31,11 +31,11 @@
         <td th:text="${model.id}"></td>
         <td th:text="${model.name}"></td>
         <td th:text="${model.credit}"></td>
-        <td th:text="${model.semester}"></td>
-        <td th:text="${model.grade}"></td>
+        <td th:text="${model.semester.getDisplayValue()}"></td>
+        <td th:text="${model.grade?.getDisplayValue()}"></td>
         <td>
-          <a th:href="@{/course/update(id=${model.id})}">Edit</a>
-          <a th:href="@{/course/delete(id=${model.id})}">Delete</a>
+          <a class="anchor-button" th:href="@{/course/update(id=${model.id})}">Edit</a>
+          <a class="anchor-button" th:href="@{/course/delete(id=${model.id})}">Delete</a>
         </td>
       </tr>
       </tbody>

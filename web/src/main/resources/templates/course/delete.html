@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <title>Delete</title>
@@ -9,6 +9,31 @@
 <body>
 <div th:insert="common/navbars::top-navbar"></div>
 <main class="main">
+  <div>
+    <form method="post" class="form" th:action="@{/course/delete}" th:object="${model}">
+      <div class="form-group model-attributes">
+        <label th:for="id">Id</label>
+        <input id="id" th:field="*{id}" th:value="${model.id}" type="number" readonly/>
+
+        <label th:for="name">Name</label>
+        <input id="name" th:field="*{name}" th:value="${model.name}" type="text" readonly/>
+
+        <label th:for="credit">Credit</label>
+        <input id="credit" th:field="*{credit}" th:value="${model.credit}"
+               type="number" step="1" min="0" max="999" readonly/>
+
+        <label for="semester">Semester</label>
+        <input id="semester" th:field="*{semester}" th:value="${model.semester}" type="text" readonly/>
+
+        <label for="grade">Grade</label>
+        <input id="grade" th:field="*{grade}" th:value="${model.grade}" type="text" readonly/>
+      </div>
+      <div class="form-group buttons">
+        <button class="button" type="submit">Delete</button>
+        <button class="button" onclick="history.back()" type="button">Back</button>
+      </div>
+    </form>
+  </div>
 </main>
 </body>
 </html>

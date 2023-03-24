@@ -60,8 +60,8 @@ public class CourseController {
     }
 
     @PostMapping(value = {"delete", "remove"})
-    private String delete(long id) {
-        repository.deleteById(id);
+    private String delete(Course model) {
+        repository.delete(model);
         return "redirect:read";
     }
 }

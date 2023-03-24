@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  font-family: cursive;
 }
 
 main {
@@ -7,10 +8,26 @@ main {
   margin: 1vw;
 }
 
-.model-attributes {
+.form {
   display: flex;
   flex-direction: column;
-  align-items: baseline;
+  align-items: center;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 50%;
+}
+
+.form-group.model-attributes {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.form-group.buttons {
+  padding: 2vw;
 }
 
 .navbar {
@@ -44,12 +61,28 @@ main {
 
 .nav-button {
   font-weight: bold;
-  color: #E9E4DD;
+  color: #e7e2db;
   text-decoration: none;
   padding: 1vw;
 }
 
 .button {
+  padding: 0.5vw;
+  border-style: none;
+  border-radius: 2px;
+  background-color: #83e8af;
+  min-width: 6vw;
+  font-family: inherit;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.button:hover {
+  background-color: #3ab67f;
+}
+
+.anchor-button {
+  color: #1b9464;
 }
 
 .table, table {
@@ -65,7 +98,7 @@ main {
 }
 
 .table > tbody > tr:hover {
-  background-color: rgba(84, 145, 217, 0.19);
+  background-color: rgba(74, 190, 129, 0.19);
 }
 
 .td.table > tbody > tr:last-child {
