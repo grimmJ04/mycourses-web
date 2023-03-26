@@ -9,7 +9,7 @@
   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/style.css">
 </head>
 <body>
-<%@ include file="/WEB-INF/jsp/common/navbars.jsp" %>
+<%@ include file="../common/navbars.jsp" %>
 
 <main class="main">
   <div>
