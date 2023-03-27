@@ -8,13 +8,10 @@
         <artifactId>courses</artifactId>
         <version>0.1.0</version>
     </parent>
-    <packaging>war</packaging>
 
-    <artifactId>courses-web</artifactId>
+    <artifactId>courses-web-jsp</artifactId>
 
     <properties>
-        <container.scope>provided</container.scope>
-
         <maven.compiler.source>${lang.version}</maven.compiler.source>
         <maven.compiler.target>${lang.version}</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -23,40 +20,21 @@
     <dependencies>
         <dependency>
             <groupId>hu.szte.inf</groupId>
-            <artifactId>courses-core</artifactId>
+            <artifactId>courses-web-controllers</artifactId>
+            <version>0.1.0</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <!-- Uncomment if using thymeleaf templating engine.
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-thymeleaf</artifactId>
-        </dependency>
-        -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
 
-        <!-- Comment out if different templating engine is used, e.g.: thymeleaf -->
         <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-jasper</artifactId>
-            <scope>${container.scope}</scope>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
-            <scope>${container.scope}</scope>
+            <scope>provided</scope>
         </dependency>
-        <!-- ******************************************************************* -->
 
         <dependency>
             <groupId>org.glassfish.jaxb</groupId>
@@ -96,5 +74,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
