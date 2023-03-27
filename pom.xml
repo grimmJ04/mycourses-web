@@ -10,7 +10,6 @@
     <packaging>pom</packaging>
     <modules>
         <module>core</module>
-        <module>web</module>
         <module>web-controllers</module>
         <module>web-thymeleaf</module>
         <module>web-jsp</module>
