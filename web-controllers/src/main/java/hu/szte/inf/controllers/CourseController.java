@@ -21,23 +21,23 @@ public class CourseController {
         this.repository = repository;
     }
 
-    @GetMapping(value = {"/create", "new"})
+    @GetMapping(value = {"/create", "/new"})
     public ModelAndView create() {
         return new ModelAndView("course/create", "model", new Course());
     }
 
-    @PostMapping(value = {"/create", "new"})
+    @PostMapping(value = {"/create", "/new"})
     private String create(Course model) {
         repository.save(model);
         return "redirect:read";
     }
 
-    @GetMapping(value = {"read", "view"})
+    @GetMapping(value = {"/read", "/view"})
     private ModelAndView read() {
         return new ModelAndView("course/read", "models", Functional.iterableToList(repository.findAll()));
     }
 
-    @GetMapping(value = {"update", "edit"})
+    @GetMapping(value = {"/update", "/edit"})
     private ModelAndView update(@RequestParam Long id) {
         var model = repository.findById(id);
         return model
@@ -45,13 +45,13 @@ public class CourseController {
                 .orElseGet(() -> new ModelAndView("redirect:read", HttpStatus.BAD_REQUEST));
     }
 
-    @PostMapping(value = {"update", "edit"})
+    @PostMapping(value = {"/update", "/edit"})
     private String update(Course model) {
         repository.save(model);
         return "redirect:read";
     }
 
-    @GetMapping(value = {"delete", "remove"})
+    @GetMapping(value = {"/delete", "/remove"})
     private ModelAndView delete(@RequestParam Long id) {
         var model = repository.findById(id);
         return model
@@ -59,7 +59,7 @@ public class CourseController {
                 .orElseGet(() -> new ModelAndView("redirect:read", HttpStatus.BAD_REQUEST));
     }
 
-    @PostMapping(value = {"delete", "remove"})
+    @PostMapping(value = {"/delete", "/remove"})
     private String delete(Course model) {
         repository.delete(model);
         return "redirect:read";
