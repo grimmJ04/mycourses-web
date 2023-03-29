@@ -6,12 +6,17 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.stereotype.Component;
 
 @SpringBootApplication
-@EnableJpaRepositories(value = "hu.szte.inf.repositories")
-public class WebApp {
+public class WebApp extends SpringBootServletInitializer {
+
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(WebApp.class);
+    }
 
     public static void main(String[] args) {
         SpringApplication.run(WebApp.class, args);

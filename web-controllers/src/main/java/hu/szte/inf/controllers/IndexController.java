@@ -13,7 +13,7 @@ public class IndexController {
         return "index";
     }
 
-    @GetMapping(value = "about")
+    @GetMapping(value = "/about")
     public String about() {
         return "about";
     }

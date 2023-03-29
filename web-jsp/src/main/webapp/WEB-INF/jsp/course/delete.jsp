@@ -22,8 +22,7 @@
         <input id="name" name="name" value="${model.name}" type="text" readonly/>
 
         <label for="credit">Credit</label>
-        <input id="credit" name="credit" value="${model.credit}"
-               type="number" step="1" min="0" max="999" readonly/>
+        <input id="credit" name="credit" value="${model.credit}" type="number" readonly/>
 
         <label for="semester">Semester</label>
         <input id="semester" name="semester" value="${model.semester}" type="text" readonly/>

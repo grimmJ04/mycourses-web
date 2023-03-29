@@ -19,8 +19,7 @@
         <input id="name" th:field="*{name}" th:value="${model.name}" type="text" readonly/>
 
         <label th:for="credit">Credit</label>
-        <input id="credit" th:field="*{credit}" th:value="${model.credit}"
-               type="number" step="1" min="0" max="999" readonly/>
+        <input id="credit" th:field="*{credit}" th:value="${model.credit}" type="number" readonly/>
 
         <label th:for="semester">Semester</label>
         <input id="semester" th:field="*{semester}" th:value="${model.semester}" type="text" readonly/>

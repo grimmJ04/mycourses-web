@@ -10,6 +10,7 @@
     </parent>
 
     <artifactId>courses-web-jsp</artifactId>
+    <packaging>war</packaging>
 
     <properties>
         <maven.compiler.source>${lang.version}</maven.compiler.source>
@@ -23,17 +24,18 @@
             <artifactId>courses-web-controllers</artifactId>
             <version>0.1.0</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-jasper</artifactId>
-            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
-            <scope>provided</scope>
         </dependency>
 
         <dependency>

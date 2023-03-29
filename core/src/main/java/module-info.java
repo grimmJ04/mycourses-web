@@ -6,6 +6,7 @@ module courses.core {
 
     exports hu.szte.inf.models;
     exports hu.szte.inf.repositories;
+    exports hu.szte.inf.services;
     exports hu.szte.inf.utils;
     exports hu.szte.inf.utils.db;
 }
