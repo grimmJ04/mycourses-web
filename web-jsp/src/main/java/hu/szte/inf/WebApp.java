@@ -13,13 +13,13 @@ import org.springframework.stereotype.Component;
 @SpringBootApplication
 public class WebApp extends SpringBootServletInitializer {
 
+    public static void main(String[] args) {
+        SpringApplication.run(WebApp.class, args);
+    }
+
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
         return application.sources(WebApp.class);
-    }
-
-    public static void main(String[] args) {
-        SpringApplication.run(WebApp.class, args);
     }
 }
 
