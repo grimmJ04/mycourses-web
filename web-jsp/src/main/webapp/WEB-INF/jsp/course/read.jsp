@@ -2,6 +2,8 @@
 
 <%@ page contentType="text/html;charset=UTF-8" %>
 
+<jsp:useBean id="models" scope="request" type="java.util.List<hu.szte.inf.models.Course>"/>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -4,6 +4,8 @@
 
 <%@ page contentType="text/html;charset=UTF-8" %>
 
+<jsp:useBean id="model" scope="request" type="hu.szte.inf.models.Course"/>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,10 +22,10 @@
     <form method="post" class="form" action="${pageContext.request.contextPath}/course/create">
       <div class="form-group model-attributes">
         <label for="name">Name</label>
-        <input id="name" name="name" type="text" value="${model.name}"/>
+        <input id="name" name="name" type="text"/>
 
         <label for="credit">Credit</label>
-        <input id="credit" name="credit" type="number" step="1" min="0" max="99" value="${model.credit}"/>
+        <input id="credit" name="credit" type="number" step="1" min="0" max="99"/>
 
         <label for="semester">Semester</label>
         <select id="semester" name="semester">

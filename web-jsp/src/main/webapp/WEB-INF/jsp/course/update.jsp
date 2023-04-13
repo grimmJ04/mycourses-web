@@ -4,6 +4,8 @@
 
 <%@ page contentType="text/html;charset=UTF-8" %>
 
+<jsp:useBean id="model" scope="request" type="hu.szte.inf.models.Course"/>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

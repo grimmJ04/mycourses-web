@@ -1,4 +1,4 @@
-<nav class="navbar top-nav">
+<nav id="navbar" class="navbar top-nav">
   <div class="nav-div left">
     <a class="nav-button" href="${pageContext.request.contextPath}/index">Home</a>
     <a class="nav-button" href="${pageContext.request.contextPath}/course/read">Course</a>
