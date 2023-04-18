@@ -1,6 +1,7 @@
 module courses.core {
     requires lombok;
     requires java.persistence;
+    requires org.hibernate.orm.core;
     requires spring.context;
     requires spring.data.commons;
 
@@ -9,4 +10,6 @@ module courses.core {
     exports hu.szte.inf.services;
     exports hu.szte.inf.utils;
     exports hu.szte.inf.utils.db;
+
+    opens hu.szte.inf.models to org.hibernate.orm.core;
 }

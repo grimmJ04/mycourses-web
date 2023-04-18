@@ -1,0 +1,2 @@
+Jsp files in this project are under WEB-INF folder, as we want to prevent the user from accessing them directly.
+Access to specific jsp files are only allowed through corresponding web servlet.
