@@ -91,7 +91,7 @@
                 <version>${spring-boot.version}</version>
             </dependency>
 
-            <!-- Optional spring boot dependency, may be used in jsp webapp -->
+            <!-- Optional spring boot dependency, may be used in jsp webapp for hot reload -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-devtools</artifactId>

@@ -2,6 +2,8 @@
 
 A projekt egy kurzusok tárolására szolgáló webalkalmazás.
 
+Ez a readme nem a feladatleírásra szolgál, csupán egyfajta segítségként használható.
+
 ## Core module
 
 Modell fájlok:
@@ -20,7 +22,8 @@ save
 <S extends T> S save(S entity)
 ```
 
-Adott objektumot mentésére szolgál.
+Adott objektumot mentésére és frissítésére is szolgál!
+Ez attól függ, hogy kap-e, avagy olyan azonosítójú objektumot kap, mely már létezik.
 
 saveAll
 ---
@@ -39,6 +42,9 @@ Optional<T> findById(ID id)
 Adott entitás keresésére szolgál.
 Amennyiben létezik a keresett elem, úgy a `get()`-el azt lekérhetjük,
 amennyiben nem, abban az esetben a tárolt érték null.
+
+Az `Optional<T>` típus egyéb hasznos metódusai még az `isPresent()` és az `isEmpty()`,
+melyek pontosan úgy viselkednek, ahogyan arra az elnevezésük alapján számíthatunk.
 
 existsById
 ---
@@ -127,7 +133,7 @@ Egyéb hasznos funkciók találhatók az **utils** package alatt.
 Spring Boot használata esetén a web-controllers modulban ajánlatos elhelyezni egy **module-info.java** fájlt.
 Tartalma megközelítőleg hasonló lesz majd:
 
-```css
+```
 module courses.web.controllers {
     requires courses.core;
     requires spring.context;
@@ -140,3 +146,113 @@ module courses.web.controllers {
 ```
 
 A web applikációs modulokon belül ne legyen ilyen module fájl!
+
+## Web-View module
+
+Használható többféle templating technológia is. Alapértelmezetten a JSP használata javasolt.
+Spring Boot megoldás esetén szükségünk lehet a következő
+`application.properties` fájlra/fájlokra a megfelelő projekt `resources` mappája alatt.
+
+JSP esetén:
+```properties
+# resolve jsp view files
+spring.mvc.view.prefix=/WEB-INF/jsp/
+spring.mvc.view.suffix=.jsp
+
+spring.jpa.generate-ddl=true
+spring.jpa.hibernate.ddl-auto=create
+
+# H2 DB
+# spring.datasource.url=jdbc:h2:file:~/database
+spring.datasource.url=jdbc:h2:mem:testdb
+spring.datasource.driverClassName=org.h2.Driver
+spring.datasource.username=sa
+spring.datasource.password=
+spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+spring.jpa.database=h2
+
+# Enabling H2 Console
+spring.h2.console.enabled=true
+
+# Custom H2 Console URL
+spring.h2.console.path=/h2-console
+
+# Statistics on and log SQL statements
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+
+# Extensive logging
+spring.jpa.properties.hibernate.generate_statistics=true
+logging.level.org.hibernate.type=trace
+logging.level.org.hibernate.stat=debug
+logging.level.org.springframework.web=debug
+
+# enable debug (set to false, to disable)
+debug=true
+```
+
+Thymeleaf esetén:
+```properties
+spring.jpa.generate-ddl=true
+spring.jpa.hibernate.ddl-auto=create
+
+# H2 DB
+# spring.datasource.url=jdbc:h2:file:~/database
+spring.datasource.url=jdbc:h2:mem:testdb
+spring.datasource.driverClassName=org.h2.Driver
+spring.datasource.username=sa
+spring.datasource.password=
+spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+spring.jpa.database=h2
+
+# Enabling H2 Console
+spring.h2.console.enabled=true
+
+# Custom H2 Console URL
+spring.h2.console.path=/h2-console
+
+# Statistics on and log SQL statements
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+
+# Extensive logging
+spring.jpa.properties.hibernate.generate_statistics=true
+logging.level.org.hibernate.type=trace
+logging.level.org.hibernate.stat=debug
+logging.level.org.springframework.web=debug
+
+# enable debug (set to false, to disable)
+debug=true
+
+# one hot reload from source
+spring.thymeleaf.prefix=file:web-thymeleaf/src/main/resources/templates/
+spring.thymeleaf.cache=false
+spring.web.resources.static-locations=file:web-thymeleaf/src/main/resources/static/
+spring.web.resources.cache.period=0
+```
+
+## Templating segítség
+
+- JSP oldalak esetén a core taglib uri-ja:
+  - 1.2 jstl esetén: http://java.sun.com/jsp/jstl/core (default),
+  - 1.0 jstl esetén: http://java.sun.com/jstl/core.
+- Thymeleaf esetén hasznos namespace (xmlns): https://www.thymeleaf.org.
+
+
+## Függőségek
+
+A megoldás során valószílűleg előforduló függőségekről a [pom.xml](./pom.xml) fájlban találhatsz infót.
+
+Nem kell mind, ugyanis jelentős részük már a core modulnak is része,
+azaz a core module megadása, mint függőség, sok tranzitív package-t is behúz.
+
+JSP webapp esetén leginkább szükséges függőségek a
+- tomcat-embed-jasper (_provided_)
+- jstl (_runtime_ vagy ha konténerünk kiszolgálja, esetleg _provided_)
+- spring-boot-starter-web (opcionálisan ez is kellhet)
+___
+
+## Közös infók
+
+- Bíró: [biro](https://biro.inf.u-szeged.hu)
+- Gyakorlati anyag: [alkalmazasfejlesztes_kozos.zip](https://biro.inf.u-szeged.hu/kozos/alkfejl/alkalmazasfejlesztes_kozos.zip)
