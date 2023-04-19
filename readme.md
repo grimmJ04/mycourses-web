@@ -238,6 +238,83 @@ spring.web.resources.cache.period=0
   - 1.0 jstl esetén: http://java.sun.com/jstl/core.
 - Thymeleaf esetén hasznos namespace (xmlns): https://www.thymeleaf.org.
 
+## Spring Boot segítség
+
+### Applikáció létrehozása
+
+```java
+@SpringBootApplication
+// You may need this, if your repositories are inside another module.
+// @EnableJpaRepositories(value = "your.package.with.repositories")
+public class WebApp /* extends SpringBootServletInitializer */ {
+
+    public static void main(String[] args) {
+        SpringApplication.run(WebApp.class, args);
+    }
+    
+    /*
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(WebApp.class);
+    }
+    */
+}
+```
+
+A kommentelt részek jsp app esetén jöhetnek jól, de ott sem feltétlen szükségesek.
+Használatuk elhagyható.
+
+### Startup logika
+
+```java
+@Component // !!! IMPORTANT !!! so that spring can find our class
+class SomeClassThatRunsOnStartup implements ApplicationRunner {
+
+    // You can use anything autowireable here,
+    // or create a corresponding constructor for
+    // your final field.
+    private static final Logger staticLogger = ...;
+
+    private final Logger logger;
+
+    public SomeClassThatRunsOnStartup(Logger logger) {
+        ...
+    }
+
+    @Override
+    public void run(String... args) {
+        // any initialization logic here
+        logger.info("...");
+    }
+}
+```
+
+### Web kontrollerek létrehozása
+
+```java
+@Controller // <-- Annotate your controllers
+@RequestMapping(value = "/course") // You could use a default mapping.
+public class IndexController {
+
+    @GetMapping(value = "/create") // get request endpoint, (/book/create)
+    public ModelAndView create() {
+        // return a new model view with a model named "model"
+        // when returning, we look for a file named create, inside the book directory
+        return new ModelAndView("course/create", "model", new Course());
+    }
+
+    @PostMapping(value = "/create") //  post request endpoint
+    public String create(Course model) { // get your model file through request param
+        // save book to db, etc ...
+        return "your page's name";
+    }
+
+    @GetMapping(value = {"/read", "/view"}) // mapping with multiple endpoint options
+    public String index() {
+        return "read data page";
+    }
+}
+```
 
 ## Függőségek
 
