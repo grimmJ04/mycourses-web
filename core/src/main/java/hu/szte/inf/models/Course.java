@@ -1,11 +1,15 @@
 package hu.szte.inf.models;
 
+import hu.szte.inf.utils.Functional;
 import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.lang.reflect.Field;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 @Getter
 @Setter
@@ -28,5 +32,10 @@ public class Course {
 
     public Course(String name, int credit, Semester semester, Grade grade) {
         this(null, name, credit, semester, grade);
+    }
+
+    @Override
+    public String toString() {
+        return Functional.beanToString(this);
     }
 }

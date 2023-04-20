@@ -5,11 +5,11 @@ public class ViewResolver {
     private static String prefix = "";
     private static String postfix = "";
 
-    public static synchronized String resolve(String viewName) {
+    public static String resolve(String viewName) {
         return prefix + viewName + postfix;
     }
 
-    public static synchronized String getPrefix() {
+    public static String getPrefix() {
         return prefix;
     }
 
@@ -17,11 +17,11 @@ public class ViewResolver {
         ViewResolver.prefix = prefix;
     }
 
-    public static synchronized String getPostfix() {
+    public static String getPostfix() {
         return postfix;
     }
 
-    public static void setPostfix(String postfix) {
+    public static synchronized void setPostfix(String postfix) {
         ViewResolver.postfix = postfix;
     }
 }
