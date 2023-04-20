@@ -33,7 +33,7 @@
         <label for="semester">Semester</label>
         <select id="semester" name="semester">
           <c:forEach var="opt" items="${Semester.values()}">
-            <option value="${opt}">${opt.displayValue}</option>
+            <option value="${opt} ${model.semester == opt ? 'selected="selected"' : ''}">${opt.displayValue}</option>
           </c:forEach>
         </select>
 
