@@ -41,8 +41,8 @@
             <td>${model.id}</td>
             <td>${model.name}</td>
             <td>${model.credit}</td>
-            <td>${model.semester.getDisplayValue()}</td>
-            <td>${model.grade != null ? model.grade.getDisplayValue() : ''}</td>
+            <td>${model.semester.displayValue}</td>
+            <td>${model.grade != null ? model.grade.displayValue : ''}</td>
             <td>
               <a class="anchor-button" href="${pageContext.request.contextPath}/course/update?id=${model.id}">Edit</a>
               <a class="anchor-button" href="${pageContext.request.contextPath}/course/delete?id=${model.id}">Delete</a>
