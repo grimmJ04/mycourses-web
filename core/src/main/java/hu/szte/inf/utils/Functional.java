@@ -33,7 +33,7 @@ public class Functional {
             stringBuilder
                     .append(names.get(i))
                     .append("=")
-                    .append(values.get(i).toString())
+                    .append(values.get(i) != null ? values.get(i).toString() : "")
                     .append("\n");
         }
         stringBuilder.append(")");
