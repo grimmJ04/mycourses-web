@@ -14,7 +14,7 @@ public class AboutServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher(ViewResolver.resolve("index")).forward(req, resp);
+        req.getRequestDispatcher(ViewResolver.resolve("about")).forward(req, resp);
     }
 }
 
