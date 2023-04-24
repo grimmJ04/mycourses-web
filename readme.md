@@ -296,7 +296,7 @@ class SomeClassThatRunsOnStartup implements ApplicationRunner {
 @RequestMapping(value = "/course") // You could use a default mapping.
 public class IndexController {
 
-    @GetMapping(value = "/create") // get request endpoint, (/book/create)
+    @GetMapping(value = "/create") // get request endpoint, (/course/create)
     public ModelAndView create() {
         // return a new model view with a model named "model"
         // when returning, we look for a file named create, inside the book directory
@@ -332,4 +332,5 @@ ___
 ## Közös infók
 
 - Bíró: [biro](https://biro.inf.u-szeged.hu)
-- Gyakorlati anyag: [alkalmazasfejlesztes_kozos.zip](https://biro.inf.u-szeged.hu/kozos/alkfejl/alkalmazasfejlesztes_kozos.zip)
+- Gyakorlati anyag:
+[alkalmazasfejlesztes_kozos.zip](https://biro.inf.u-szeged.hu/kozos/alkfejl/alkalmazasfejlesztes_kozos.zip)
